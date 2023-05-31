@@ -26,7 +26,7 @@ router.post(
 
 router.get(
   '/:id',
-  isAuthenticated(),
+  //isAuthenticated(),
   validate(ProductSchema, 'params'),
   getProductByIdHandler,
 );

@@ -8,6 +8,7 @@ const ObjectId = require('mongoose').Types.ObjectId;
 async function getAllProducts() {
   try {
     const products = await Product.find();
+    console.log('in ser ', products)
     return products;
   } catch (error) {
     throw error;

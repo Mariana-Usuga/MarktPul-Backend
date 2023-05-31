@@ -24,7 +24,7 @@ router.post(
 );
 router.get(
   '/:id',
-  isAuthenticated(),
+  //isAuthenticated(),
   validate(MarketSchema, 'params'),
   getMarketByIdHandler,
 );

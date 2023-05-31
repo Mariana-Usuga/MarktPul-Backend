@@ -15,7 +15,7 @@ const {
 async function getAllProductsHandler(req, res) {
   try {
     const products = await getAllProducts();
-
+    console.log('entra en controller ', products)
     if (products.length == 0) {
       return res.status(404).json({ message: `no products found` });
     }

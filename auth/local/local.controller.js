@@ -18,6 +18,7 @@ async function loginUSerHandler(req, res) {
       });
     }
     //creamos el token
+    console.log('USER PROFILE ', user.profile)
     const token = signToken(user.profile);
     res.status(200).json({ JWT: token });
   } catch (error) {

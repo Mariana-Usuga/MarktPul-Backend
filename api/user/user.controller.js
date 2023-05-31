@@ -64,7 +64,7 @@ async function createUserHandler(req, res) {
     try {
       const hash = crypto
         .createHash('sha256')
-        .update(newUser.email)
+        .update(newUser.username)
         .digest('hex');
 
       newUser.passwordResetToken = hash;
@@ -148,17 +148,7 @@ async function getUserMeHandler(req, res) {
     return res.status(400).json({ error: error.message });
   }
 }
-async function getUserMeHandler(req, res) {
-  try {
-    return res.status(200).json(req.user);
-  } catch (error) {
-    console.log(
-      '🚀 ~ file: user.controller.js ~ line 142 ~ getUserMeHandler ~ error',
-      error,
-    );
-    return res.status(400).json({ error: error.message });
-  }
-}
+
 module.exports = {
   getAllUsersHandler,
   createUserHandler,
