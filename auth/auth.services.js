@@ -1,6 +1,6 @@
 const jsonwebtoken = require('jsonwebtoken');
 const compose = require('composable-middleware');
-const { getUserByEmail } = require('../api/user/user.service');
+const { getUserByUserName } = require('../api/user/user.service');
 const { config } = require('../config');
 
 function signToken(payload) {
@@ -14,11 +14,11 @@ function isAuthenticated() {
     try {
       //obtenemos el token de autorizacion
       const authHeader = req.headers.authorization;
-      console.log('entro en autenticacion');
       if (authHeader) {
         const [, token] = authHeader.split(' ');
         //validamos el token
         const payload = await validateToken(token);
+
         if (!payload) {
           console.log('token no valido');
           return res
@@ -27,18 +27,19 @@ function isAuthenticated() {
               message: 'unauthorized',
             })
             .end();
-        }
+        } 
+
         //atach user to request
-        const user = await getUserByEmail(payload.email);
+        const user = await getUserByUserName(payload.username);
         if (!user) {
-          console.log('entra en no user');
+          console.log('entra en no user', user);
           return res
             .status(401)
             .json({
               message: 'Unauthorized',
             })
             .end();
-        }
+        } 
         req.user = user;
         next();
         return null;

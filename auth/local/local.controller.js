@@ -3,6 +3,7 @@ const { signToken } = require('../auth.services');
 
 async function loginUSerHandler(req, res) {
   const { email, password } = req.body;
+  console.log('entra en login')
   try {
     /* buscamos el usuario y si no encontramos nos retornara un mensaje de usuario no encontrado */
     const user = await findOneUser({ email });

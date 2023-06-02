@@ -60,6 +60,15 @@ async function getUserByEmail(email) {
   }
 }
 
+async function getUserByUserName(username) {
+  try {
+    const user = await User.findOne({ username });
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function addBillingCards(user, card) {
   const creditCards = get(user, 'billing.creditCards', []);
   const customer = {
@@ -139,4 +148,6 @@ module.exports = {
   findOneUser,
   ValidateUserEmail,
   ValidateUserName,
+  getProductsPurchased,
+  getUserByUserName,
 };

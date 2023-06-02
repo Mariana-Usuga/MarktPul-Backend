@@ -33,6 +33,7 @@ async function getAllUsersHandler(req, res) {
 async function createUserHandler(req, res) {
   try {
     const { username, email } = req.body;
+    console.log('username ', username)
     const matchUserEmail = await ValidateUserEmail(email);
     if (matchUserEmail) {
       return res.status(403).json({
@@ -82,6 +83,7 @@ async function createUserHandler(req, res) {
         },
       };
       sendEmail(email);
+      console.log('user pro ', user.profile)
       return res.status(201).json(user.profile);
     } catch (error) {
       console.error(error);
