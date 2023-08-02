@@ -4,6 +4,7 @@ const market = require('./api/market')
 const upload = require('./api/upload')
 const payment = require('./api/payment');
 const authLocal = require('./auth/local');
+const serverless = require('serverless-http');
 
 function routes(app) {
    app.use('/api/product', product);
@@ -14,4 +15,7 @@ function routes(app) {
    app.use('/auth/local', authLocal);
 }
 
+app.use('/.netlify/functions/api', routes);
+
+module.exports.handler = serverless(app)
 module.exports = routes;
