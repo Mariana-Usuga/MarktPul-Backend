@@ -15,7 +15,7 @@ function routes(app) {
    app.use('/auth/local', authLocal);
 }
 
-app.use('/.netlify/functions/api', routes);
+//app.use('/.netlify/functions/api', routes);
 
-module.exports.handler = serverless(app)
+//module.exports.handler =
 module.exports = routes;

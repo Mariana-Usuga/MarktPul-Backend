@@ -154,3 +154,6 @@ dist
 
 # Support for Project snippet scope
 !.vscode/*.code-snippets
+
+# Local Netlify folder
+.netlify
