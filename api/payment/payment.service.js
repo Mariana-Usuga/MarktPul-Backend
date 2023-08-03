@@ -1,6 +1,6 @@
 const epayco = require('epayco-sdk-node')({
-  apiKey: process.env.EPAYCO_PUBLIC_KEY,
-  privateKey: process.env.EPAYCO_PRIVATE_KEY,
+  apiKey: '728cdc6787d4e449b0f1be004fc9f5d9',
+  privateKey: '2ec8c11c774b5afb9347072024efe1aa',
   lang: 'ES',
   test: true,
 });
