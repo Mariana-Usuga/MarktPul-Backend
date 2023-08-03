@@ -3,6 +3,7 @@ const express = require('express');
 const expressConfig = require('./config/express');
 const connectDB = require('./config/database');
 const routes = require('./routes');
+const functions = require('firebase-functions')
 const { config } = require('./config/index');
 
 const app = express();
@@ -21,5 +22,7 @@ app.listen(PORT, () => {
 
   console.log(`Server running 🤖 at http://localhost:${PORT}/`);
 });
+
+exports.app = functions.https.onRequest(app);
 
 module.exports = app;
